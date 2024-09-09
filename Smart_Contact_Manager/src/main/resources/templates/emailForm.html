@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Home page</title>
+</head>
+<body>
+
+	<section class="d-flex align-items-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 offset-md-4">
+
+					<div class="text-center" th:switch="${msg}">
+
+						<div th:case="alert-error" class="alert alert-danger" role="alert">
+							No account is found. PLease register first!<span><a
+								th:href="@{/signUp}" class="ml-1 text-info">Register here!!</a></span>
+						</div>
+
+
+						<span th:case="*"></span>
+					</div>
+
+					<div class="card mt-5">
+
+						<div class="card-body">
+
+							<form th:action="@{/process-password}" method="post" action="#">
+
+								<div class="form-group">
+
+									<label for="email">Enter registered email</label> <input
+										type="email" class="form-control" id="email" name="email"
+										required>
+								</div>
+
+
+								<div class="container text-center">
+									<button type="submit" class="btn color-secondary text-white">Send
+										OTP</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>

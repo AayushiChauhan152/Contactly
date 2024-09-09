@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base2::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Dashboard</title>
+</head>
+<body>
+	<section class="d-flex align-items-center">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-6 offset-md-3">
+					<div class="card mt-5">
+
+						<div class="card-body">
+
+							<div class="text-center mb-5">
+								<h3>Change Your Password</h3>
+							</div>
+
+
+							<form th:action="@{/user/doSetting}" method="post" action="#">
+
+
+								<div class="text-center" th:switch="${msg}">
+
+									<div th:case="alert-error" class="alert alert-danger"
+										role="alert">You entered wrong password!!</div>
+
+									<span th:case="*"></span>
+								</div>
+
+
+
+								<div class="input-group mb-3">
+
+									<label for="inlineFormInputGroup" class="mr-3">Old
+										Password</label> <input type="password" class="form-control"
+										id="inlineFormInputGroup" name="oldPassword" required>
+								</div>
+
+
+								<div class="input-group">
+
+									<label for="password" class="mr-3">New Password</label> <input
+										type="password" class="form-control" id="password"
+										name="newPassword" required>
+
+								</div>
+
+
+								<div class="container text-center mt-5">
+									<button type="submit" class="btn color-secondary text-white">Submit</button>
+									<button type="reset" class="btn color-primary text-white">Reset</button>
+
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>

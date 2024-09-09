@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Home page</title>
+</head>
+<body>
+
+	<section class="d-flex align-items-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 offset-md-4">
+
+					<div class="text-center" th:switch="${msg}">
+
+						<div th:case="alert-error" class="alert alert-danger" role="alert">You have
+							entered wrong OTP.</div>
+
+						<div th:case="alert-success" class="alert alert-success"
+							role="alert">We have sent you an OTP on registered email
+							ID.</div>
+
+						<span th:case="*"></span>
+
+					</div>
+
+					<div class="card mt-5">
+
+						<div class="card-body">
+
+							<form method="post" th:action="@{/verify-otp}">
+
+								<div class="form-group">
+
+									<label for="email">Enter OTP</label> <input type="number"
+										class="form-control" id="email" name="formOTP" required>
+								</div>
+
+								<div class="container text-center">
+									<button type="submit" class="btn color-secondary text-white">Verify</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>

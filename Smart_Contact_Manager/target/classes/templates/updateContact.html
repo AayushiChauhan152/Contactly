@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base2::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Dashboard</title>
+</head>
+<body>
+
+	<section>
+		
+		<div class="card mr-5 ml-5">
+
+			<div class="text-center" th:switch="${msg}">
+
+				<div th:case="alert-error" class="alert alert-danger" role="alert">There
+					are items that require your attention.</div>
+
+				<div th:case="alert-success" class="alert alert-success"
+					role="alert">Contact updated Successfully!!</div>
+
+				<span th:case="*"></span>
+			</div>
+			
+			<div class="card-body">
+				<div class="container-fluid mt-1">
+
+					<div class="row ">
+						<div class="col-md-8 offset-md-2">
+
+							<div class=" text-center mb-3">
+								<h1>Update Contact</h1>
+							</div>
+
+							<form th:action="@{/user/process-update}" method="post"
+								th:object="${contact}" enctype="multipart/form-data">
+
+								<input type="text" th:value="${contact.cid}" name="c_id"/>
+
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-plus"></i>
+										</div>
+									</div>
+									<input type="text" class="form-control"
+										id="inlineFormInputGroup" name="cname" th:value="${contact.cname}"
+										placeholder="Enter name here.." required>
+								</div>
+
+
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-phone"></i>
+										</div>
+									</div>
+									<input type="number" class="form-control"
+										id="inlineFormInputGroup"  name="phone" th:value="${contact.phone}"
+										placeholder="Enter phone number here.." required>
+								</div>
+
+
+
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-envelope"></i>
+										</div>
+									</div>
+									<input type="email" class="form-control"
+										id="inlineFormInputGroup" name="email" th:value="${contact.email}"
+										placeholder="Enter email here..">
+								</div>
+
+
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-briefcase"></i>
+										</div>
+									</div>
+									<input type="text" class="form-control"
+										id="inlineFormInputGroup" name="work" th:value="${contact.work}"
+										placeholder="Enter work here..">
+								</div>
+
+
+								<div class="conatiner text-center">
+									<img th:src="@{'/img/'+${contact.profile_img}}" alt="" class="my-profile"/>
+								</div>
+
+								<div class="input-group mb-2">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-image"></i>
+										</div>
+									</div>
+									<input type="file" class="form-control"
+										id="inlineFormInputGroup" name="profile_img">
+								</div>
+
+
+								<div class="input-group mb-2">
+									<textarea rows="6" class="form-control" id="mytextarea" th:value="${contact.detail}"
+									 name="detail"
+										placeholder="Enter details here.."></textarea>
+								</div>
+
+
+
+								<div class="container text-center">
+									<button type="submit" class="btn color-secondary text-white">Update
+										Contact</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</section>
+
+</body>
