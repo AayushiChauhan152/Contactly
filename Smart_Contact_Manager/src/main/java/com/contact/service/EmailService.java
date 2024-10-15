@@ -20,12 +20,13 @@ public class EmailService {
 	public boolean sendEmail(String subject,String msg,String to)  {
 		
 		boolean f=false;
-//		String from="chauhanaayushi09@gmail.com";
-		String from="ayurana87@gmail.com";
+		String from="from";
 		
 		String host="smtp.gmail.com";
+		
 //		get system properties
 		Properties properties = System.getProperties();
+		
 //		setting imp info to properties object
 		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.port", "465");
@@ -37,7 +38,7 @@ public class EmailService {
 
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("ayurana87@gmail.com","xwchwcbjfgboqqja");
+				return new PasswordAuthentication(from,password);
 			}
 	
 		});
